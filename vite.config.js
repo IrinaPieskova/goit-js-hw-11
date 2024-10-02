@@ -1,4 +1,3 @@
-// vite.config.js
 import { defineConfig } from 'vite';
 import { glob } from 'glob';
 import injectHTML from 'vite-plugin-html-inject';
@@ -16,14 +15,23 @@ export default defineConfig(({ command }) => {
       rollupOptions: {
         input: glob.sync('./src/*.html'),
         output: {
-          // Тимчасово вимкнено manualChunks для тестування
-          // manualChunks(id) {
-          //   if (id.includes('node_modules')) {
-          //     return 'vendor';
-          //   }
-          // },
-          entryFileNames: '[name].js', // Спрощене правило для entry файлів
-          assetFileNames: 'assets/[name]-[hash][extname]',
+          manualChunks(id) {
+            if (id.includes('node_modules')) {
+              return 'vendor';
+            }
+          },
+          entryFileNames: chunkInfo => {
+            if (chunkInfo.name === 'commonHelpers') {
+              return 'commonHelpers.js';
+            }
+            return '[name].js';
+          },
+          assetFileNames: assetInfo => {
+            if (assetInfo.name && assetInfo.name.endsWith('.html')) {
+              return '[name].[ext]';
+            }
+            return 'assets/[name]-[hash][extname]';
+          },
         },
       },
       outDir: '../dist',
