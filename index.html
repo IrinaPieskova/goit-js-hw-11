@@ -3,12 +3,14 @@
 
 <head>
   <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="/src/css/styles.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.min.css" />
-  <title>Image Search App</title>
+  <title>Vanilla App Template</title>
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.12.1/simple-lightbox.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/izitoast/dist/css/iziToast.min.css">
   <script type="module" crossorigin src="/vanilla-app-template/index.js"></script>
-  <link rel="stylesheet" crossorigin href="/vanilla-app-template/assets/index-DumFYO8Z.css">
+  <link rel="stylesheet" crossorigin href="/vanilla-app-template/assets/index-CfCr_eEE.css">
 </head>
 
 <body>
@@ -16,11 +18,17 @@
     <input type="text" name="query" placeholder="Search images..." required />
     <button type="submit">Search</button>
   </form>
+  <div class="loader" style="display: none">
+    Loading images, please wait...
+  </div>
 
-  <div class="loader" style="display: none"></div>
+  <div class="gallery"></div>
 
-  <ul class="gallery"></ul>
+  <main>
+  </main>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.12.1/simple-lightbox.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/izitoast/dist/js/iziToast.min.js"></script>
 </body>
 
 </html>
